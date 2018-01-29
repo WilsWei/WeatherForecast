@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">Weather Forecast</string>]
+
+    <!--Alert Dialog-->
+    <string name="dialog_title">""</string>
+    <string name="progress_dialog_title">""</string>
+
+    <!--HTTP-->
+    <string name="api_response_error">伺服器無回應，請稍候再試。</string>
+    <string name="connection_timeout">連線逾期。</string>
+    <string name="can_not_connection">無法建立連線，請稍候再試。</string>
+</resources>

@@ -1,6 +1,6 @@
 package tw.com.weather.cwd.weatherforecast.util.http.listener;
 
-import android.app.Activity;
+import android.content.Context;
 
 import tw.com.weather.cwd.weatherforecast.util.AlertUtil;
 
@@ -17,11 +17,7 @@ public abstract class ResponseListener {
      * @param activity
      * @return
      */
-    public static boolean handleCommonError(ResponseResult result, final Activity activity) {
-
-        String returnCode = result.getReturnCode();
-
-
+    public static boolean handleCommonError(ResponseResult result, Context context) {
         return false;
     }
 
@@ -29,10 +25,10 @@ public abstract class ResponseListener {
     /**
      * 預設處理錯誤代碼的方法
      */
-    public static void handleResponseError(ResponseResult result, Activity activity){
+    public static void handleResponseError(ResponseResult result, Context context){
 
-        if(!handleCommonError(result, activity)){
-            AlertUtil.showAlertDialog(activity, result.getReturnMessage());
+        if(!handleCommonError(result, context)){
+            AlertUtil.showAlertDialog(context, result.getReturnMessage());
         }
     }
 

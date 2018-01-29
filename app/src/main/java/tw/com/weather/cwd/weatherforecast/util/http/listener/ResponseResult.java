@@ -11,6 +11,11 @@ public class ResponseResult {
     // 成功
     public static final String RESULT_SUCCESS = "S0000";
 
+    //回傳失敗
+    public static final String RESULT_ERROR = "S9999";
+    //API Name不匹配
+    public static final String RESULT_API_ID_FAIL = "S888";
+
     public static final String RESULT_CONNECTION_ERROR = "-200";
     // Volley request timeout
     public static final String RESULT_CONNECTION_TIMEOUT = "-210";

@@ -1,4 +1,4 @@
-package tw.com.weather.cwd.weatherforecast.util.http;
+package tw.com.weather.cwd.weatherforecast.util.http.weather;
 
 import android.content.Context;
 import android.util.Log;
@@ -21,10 +21,10 @@ public class HttpUtilBase {
     public static final int MAX_RETRY_TIMES = -1;
     public static int TIMEOUT = 60 * 1000;
 
-    public static RequestQueue publicQueue;
+    private static RequestQueue sQueue;
 
     public static String addRequestParam(String apiNameUrl, HashMap<String, String> params){
-        publicQueue.getCache().clear();
+        sQueue.getCache().clear();
 
         if(params != null) {
             for (String key : params.keySet()) {
@@ -42,16 +42,15 @@ public class HttpUtilBase {
     }
 
     public static RequestQueue newRequestQueue(Context context) {
-        if(publicQueue == null) {
-            return Volley.newRequestQueue(context);
-        } else {
-            return publicQueue;
+        if(sQueue == null) {
+            sQueue = Volley.newRequestQueue(context);
         }
+        return sQueue;
     }
 
     public static void cancelQueue(String tag) {
-        if (publicQueue != null) {
-            publicQueue.cancelAll(tag);
+        if (sQueue != null) {
+            sQueue.cancelAll(tag);
         }
     }
 }

@@ -5,6 +5,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 import android.view.MotionEvent;
 
+import tw.com.weather.cwd.weatherforecast.util.http.weather.HttpUtilBase;
+
 
 public class ActivityBase extends AppCompatActivity {
 
@@ -25,21 +27,11 @@ public class ActivityBase extends AppCompatActivity {
         return super.dispatchTouchEvent(ev);
     }
 
-    @Override
-    protected void onResume() {
-        super.onResume();
-    }
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-
-    }
 
     @Override
     protected void onPause() {
         super.onPause();
-
+        HttpUtilBase.cancelQueue(TAG);
     }
 
 

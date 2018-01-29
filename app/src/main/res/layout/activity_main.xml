@@ -6,6 +6,31 @@
     android:layout_height="match_parent"
     tools:context="tw.com.weather.cwd.weatherforecast.controller.MainActivity">
 
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/app_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/AppTheme.AppBarOverlay"
+        android:fitsSystemWindows="true">
+        <android.support.design.widget.CollapsingToolbarLayout
+            android:id="@+id/collapsingToolBar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:expandedTitleMarginEnd="45dp">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="center_vertical">
+                <Spinner
+                    android:id="@+id/spinner_citys"
+                    android:layout_width="@dimen/spinner_width"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="@dimen/x4"/>
+            </LinearLayout>
+
+        </android.support.design.widget.CollapsingToolbarLayout>
+    </android.support.design.widget.AppBarLayout>
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recyclerViewWeather"
         android:layout_width="match_parent"

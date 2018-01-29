@@ -16,43 +16,4 @@ public class NetworkUtil {
         NetworkInfo networkInfo = connMgr.getActiveNetworkInfo();
         return (networkInfo != null && networkInfo.isConnected());
     }
-
-    /**
-     * Check if there is any connectivity to a Wifi network
-     * @param context
-     * @return
-     */
-    public static boolean isConnectedWifi(Context context){
-        ConnectivityManager connMgr = (ConnectivityManager)context.getSystemService(Context.CONNECTIVITY_SERVICE);
-        NetworkInfo info = connMgr.getActiveNetworkInfo();
-        return (info != null && info.isConnected() && info.getType() == ConnectivityManager.TYPE_WIFI);
-    }
-
-    /**
-     * Check if there is any connectivity to a mobile network
-     * @param context
-     * @return
-     */
-    public static boolean isConnectedMobile(Context context){
-        ConnectivityManager connMgr = (ConnectivityManager)context.getSystemService(Context.CONNECTIVITY_SERVICE);
-        NetworkInfo info = connMgr.getActiveNetworkInfo();
-        return (info != null && info.isConnected() && info.getType() == ConnectivityManager.TYPE_MOBILE);
-    }
-
-    public static String getDeviceIPAddress() {
-        try {
-            List<NetworkInterface> networkInterfaces = Collections.list(NetworkInterface.getNetworkInterfaces());
-            for (NetworkInterface networkInterface : networkInterfaces) {
-                List<InetAddress> inetAddresses = Collections.list(networkInterface.getInetAddresses());
-                for (InetAddress inetAddress : inetAddresses) {
-                    if (!inetAddress.isLoopbackAddress()) {
-                        return inetAddress.getHostAddress().toUpperCase();
-                    }
-                }
-            }
-        } catch (Exception ex) {
-            Log.d("NetworkUtil", Log.getStackTraceString(ex));
-        }
-        return "";
-    }
 }

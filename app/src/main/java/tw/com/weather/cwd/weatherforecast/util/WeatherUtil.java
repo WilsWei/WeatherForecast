@@ -134,7 +134,7 @@ public class WeatherUtil {
             int weekListIndex = findWeatherDataList(weeklist, startDate);
             WeatherData currentWeatherData = getWeatherData(weeklist, startDate, weekListIndex);
 
-            if(FormatUtil.isNight(data.getStartTime())) {
+            if(SharedUtil.isNight(data.getStartTime())) {
                 currentWeatherData.getNightDetail().setTemperature(data.getElementValue());
             } else {
                 currentWeatherData.getEarlyDetail().setTemperature(data.getElementValue());
@@ -157,7 +157,7 @@ public class WeatherUtil {
             int weekListIndex = findWeatherDataList(weeklist, startDate);
             WeatherData currentWeatherData = getWeatherData(weeklist, startDate, weekListIndex);
 
-            if(FormatUtil.isNight(data.getStartTime())) {
+            if(SharedUtil.isNight(data.getStartTime())) {
                 currentWeatherData.getNightDetail().setStatusDec(data.getElementValue());
                 if(data.getParameter() != null) {
                     currentWeatherData.getNightDetail().setIconID(data.getParameter().get(0).getParameterValue());

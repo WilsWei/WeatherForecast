@@ -14,6 +14,9 @@ import java.util.Date;
 
 public class FormatUtil {
     private static final String TAG = "FormatUtil";
+
+    private static final String DATA_FORMAT = "yyyy-MM-dd";
+    private static final String DATATIME_FORMAT = "yyyy-MM-dd HH:mm:ss";
     /**
      * 時間字串轉為date物件
      * @param timeString yyyy-MM-dd HH:mm:ss"
@@ -23,9 +26,9 @@ public class FormatUtil {
             return null;
         }
 
-        SimpleDateFormat dayFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        SimpleDateFormat dateTimeFormat = new SimpleDateFormat(DATATIME_FORMAT);
         try {
-            Date date = dayFormat.parse(timeString);
+            Date date = dateTimeFormat.parse(timeString);
             return date;
         } catch (ParseException e) {
             Log.d(TAG, Log.getStackTraceString(e));
@@ -37,43 +40,37 @@ public class FormatUtil {
     /**
      * 抓取日期
      * @param date
-     * @return
+     * @return 回傳String -> yyyy-MM-dd
      */
     public static String getDate(Date date) {
 
-        SimpleDateFormat dayFormat = new SimpleDateFormat("yyyy-MM-dd");
-        return dayFormat.format(date);
+        SimpleDateFormat dateFormat = new SimpleDateFormat(DATA_FORMAT);
+        return dateFormat.format(date);
     }
 
-
     /**
-     * 判斷是否為晚上時間
-     * @param timeString
+     *  日期
+     * @param dateString  (yyyy-MM-dd)
+     * @return Calendar
      */
-    public static boolean isNight(String timeString) {
-        Date targetDate = timeStringToDate(timeString);
+    public static Calendar getDate(String dateString) {
+        SimpleDateFormat dateFormat = new SimpleDateFormat(DATA_FORMAT);
 
-        if(targetDate != null) {
-            Calendar target = Calendar.getInstance();
-            target.setTime(targetDate);
-
+        try {
+            Date date = dateFormat.parse(dateString);
             Calendar calendar = Calendar.getInstance();
-            calendar.setTime(targetDate);
-            calendar.set(Calendar.HOUR_OF_DAY, 18);
+            calendar.setTime(date);
+            calendar.set(Calendar.HOUR_OF_DAY, 0);
             calendar.set(Calendar.MINUTE,0);
             calendar.set(Calendar.SECOND,0);
             calendar.set(Calendar.MILLISECOND,0);
-
-            if(target.before(calendar)) {
-                return false;
-            } else {
-                return true;
-            }
-
+            return calendar;
+        } catch (ParseException e) {
+            return null;
         }
 
 
-        return false;
     }
+
 
 }

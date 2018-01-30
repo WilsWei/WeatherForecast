@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="spinner_sort_array">
+        <item>時間-正向排序</item>
+        <item>時間-反向排序</item>
+        <item>早上溫度-高至低</item>
+        <item>早上溫度-低至高</item>
+        <item>晚上溫度-高至低</item>
+        <item>晚上溫度-低至高</item>
+    </string-array>
+
+</resources>

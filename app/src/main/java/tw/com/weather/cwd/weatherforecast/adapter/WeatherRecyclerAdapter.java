@@ -6,13 +6,13 @@ import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import java.util.List;
 
 import tw.com.weather.cwd.weatherforecast.R;
 import tw.com.weather.cwd.weatherforecast.model.WeatherData;
+import tw.com.weather.cwd.weatherforecast.util.SharedUtil;
 
 
 public class WeatherRecyclerAdapter extends RecyclerView.Adapter<WeatherRecyclerAdapter.ViewHolder> {
@@ -38,7 +38,19 @@ public class WeatherRecyclerAdapter extends RecyclerView.Adapter<WeatherRecycler
     }
 
     private void setDataViewValue (ViewHolder viewHolder, WeatherData data) {
-        viewHolder.textDate.setText(data.getData());
+
+        viewHolder.dayOfWeekText.setText(SharedUtil.getDayOfWeek(mContext, data.getData()));
+
+        if(SharedUtil.compareToToday(data.getData()) == 0) {
+            viewHolder.dateText.setText(mContext.getString(R.string.today));
+        } else if(SharedUtil.compareToToday(data.getData()) == 1) {
+            viewHolder.dateText.setText(mContext.getString(R.string.tomorrow));
+        } else if(SharedUtil.compareToToday(data.getData()) == 2) {
+            viewHolder.dateText.setText(mContext.getString(R.string.after_tomorrow));
+        } else {
+            viewHolder.dateText.setText(data.getData());
+        }
+
 
         if(data.getEarlyDetail() != null && !TextUtils.isEmpty(data.getEarlyDetail().getTemperature())) {
             viewHolder.textEarlyTemperature.setText(String.format(mContext.getString(R.string.temperature), data.getEarlyDetail().getTemperature()));
@@ -73,17 +85,16 @@ public class WeatherRecyclerAdapter extends RecyclerView.Adapter<WeatherRecycler
 
 
     static class ViewHolder extends RecyclerView.ViewHolder {
-
-        private TextView textDate;
+        private TextView dayOfWeekText;
+        private TextView dateText;
         private TextView textEarlyTemperature;
         private TextView textNightTemperature;
-
-        private RelativeLayout relativeLayoutItem;
 
         public ViewHolder(View itemView) {
             super(itemView);
 
-            textDate = (TextView) itemView.findViewById(R.id.text_date);
+            dayOfWeekText = (TextView) itemView.findViewById(R.id.text_day_of_week);
+            dateText = (TextView) itemView.findViewById(R.id.text_date);
             textEarlyTemperature = (TextView) itemView.findViewById(R.id.text_early);
             textNightTemperature = (TextView) itemView.findViewById(R.id.text_night);
 

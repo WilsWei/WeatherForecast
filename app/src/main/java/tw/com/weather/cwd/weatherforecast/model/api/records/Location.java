@@ -14,14 +14,14 @@ public class Location implements Parcelable {
     private String geocode;
     private String lat;
     private String lon;
-    private ArrayList<WeatherDetailInfo> weatherElement;
+    private ArrayList<WeatherElement> weatherElement;
 
     protected Location(Parcel in) {
         locationName = in.readString();
         geocode = in.readString();
         lat = in.readString();
         lon = in.readString();
-        weatherElement = in.createTypedArrayList(WeatherDetailInfo.CREATOR);
+        weatherElement = in.createTypedArrayList(WeatherElement.CREATOR);
     }
 
     public static final Creator<Location> CREATOR = new Creator<Location>() {
@@ -68,11 +68,11 @@ public class Location implements Parcelable {
         this.lon = lon;
     }
 
-    public ArrayList<WeatherDetailInfo> getWeatherElement() {
+    public ArrayList<WeatherElement> getWeatherElement() {
         return weatherElement;
     }
 
-    public void setWeatherElement(ArrayList<WeatherDetailInfo> weatherElement) {
+    public void setWeatherElement(ArrayList<WeatherElement> weatherElement) {
         this.weatherElement = weatherElement;
     }
 

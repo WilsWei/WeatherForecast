@@ -31,4 +31,6 @@
     <dimen name="x18">72dp</dimen>
 
     <dimen name="spinner_width">180dp</dimen>
+
+    <dimen name="list_item_height">60dp</dimen>
 </resources>

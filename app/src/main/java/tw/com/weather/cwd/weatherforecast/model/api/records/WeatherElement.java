@@ -9,27 +9,27 @@ import java.util.ArrayList;
  * Created by siang on 2018/1/29.
  */
 
-public class WeatherDetailInfo implements Parcelable {
+public class WeatherElement implements Parcelable {
 
     private String elementName;
     private String elementMeasure;
     private ArrayList<WeatherTimeData> time;
 
-    protected WeatherDetailInfo(Parcel in) {
+    protected WeatherElement(Parcel in) {
         elementName = in.readString();
         elementMeasure = in.readString();
         time = in.createTypedArrayList(WeatherTimeData.CREATOR);
     }
 
-    public static final Creator<WeatherDetailInfo> CREATOR = new Creator<WeatherDetailInfo>() {
+    public static final Creator<WeatherElement> CREATOR = new Creator<WeatherElement>() {
         @Override
-        public WeatherDetailInfo createFromParcel(Parcel in) {
-            return new WeatherDetailInfo(in);
+        public WeatherElement createFromParcel(Parcel in) {
+            return new WeatherElement(in);
         }
 
         @Override
-        public WeatherDetailInfo[] newArray(int size) {
-            return new WeatherDetailInfo[size];
+        public WeatherElement[] newArray(int size) {
+            return new WeatherElement[size];
         }
     };
 

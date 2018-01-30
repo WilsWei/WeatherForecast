@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" 
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bg_bottom_line"
+    android:padding="@dimen/x4">
+
+
+    <LinearLayout
+        android:id="@+id/linearLayout_right"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginLeft="@dimen/x2"
+        android:orientation="vertical"
+        android:gravity="center_vertical">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="@dimen/x1" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/x1"
+                style="@style/CommonText.Large"
+                android:text="@string/early" />
+
+            <TextView
+                android:id="@+id/text_early"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/CommonText.General" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/x1"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/x1"
+                style="@style/CommonText.General"
+                android:text="@string/night" />
+
+            <TextView
+                android:id="@+id/text_night"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/CommonText.General" />
+        </LinearLayout>
+
+
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/relativeLayout_left"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_centerVertical="true"
+        android:layout_toLeftOf="@id/linearLayout_right"
+        android:gravity="center_vertical">
+
+        <TextView
+            android:id="@+id/text_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/CommonText.Large" />
+
+    </RelativeLayout>
+
+
+</RelativeLayout>

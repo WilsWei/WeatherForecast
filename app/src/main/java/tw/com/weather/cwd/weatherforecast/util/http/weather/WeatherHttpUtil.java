@@ -20,7 +20,13 @@ import tw.com.weather.cwd.weatherforecast.util.http.listener.ResponseListener;
 
 public class WeatherHttpUtil extends HttpUtilBase{
 
-
+    /**
+     * 查詢一週天氣
+     * @param locationName 城市
+     * @param responseListener
+     * @param context
+     * @throws JSONException
+     */
     public static void getWeekWeather(String locationName, ResponseListener responseListener, Context context) throws JSONException {
         String apiName = "F-D0047-091";
         String apiUrl = getApiUrl(apiName);
@@ -32,7 +38,7 @@ public class WeatherHttpUtil extends HttpUtilBase{
         params.put("locationName", locationName);
         params.put("sort", "time");
 
-        String requestURL = HttpUtilBase.addRequestParam(apiUrl, null);
+        String requestURL = HttpUtilBase.addRequestParam(apiUrl, params);
         JsonResponseListener jsonResponseListener = new JsonResponseListener(context, apiName, responseListener);
         JsonResponseErrorListener errorListener = new JsonResponseErrorListener(context, apiName, responseListener);
 

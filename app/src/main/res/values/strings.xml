@@ -12,4 +12,13 @@
     <string name="api_response_error">伺服器無回應，請稍候再試。</string>
     <string name="connection_timeout">連線逾期。</string>
     <string name="can_not_connection">無法建立連線，請稍候再試。</string>
+
+    <!-- Error -->
+    <string name="msg_no_available_network">目前無網路連線，請稍候再試。</string>
+
+    <!--Weather-->
+    <string name="night">晚上：</string>
+    <string name="early">早上：</string>
+    <string name="temperature">%s℃</string>
+
 </resources>

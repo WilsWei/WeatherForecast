@@ -1,7 +1,12 @@
 package tw.com.weather.cwd.weatherforecast.util.http.response;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import tw.com.weather.cwd.weatherforecast.model.api.WeathersApiData;
 
 /**
  * Created by Yu-D-Siang on 2018/1/29.
@@ -49,5 +54,10 @@ public class WeatherResponseBodyUtil {
         } else {
             return "";
         }
+    }
+
+    public static WeathersApiData getWeathersApiData(JSONObject object){
+        Gson gson = new Gson();
+        return gson.fromJson(object.toString(), WeathersApiData.class);
     }
 }

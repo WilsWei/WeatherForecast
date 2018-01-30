@@ -36,7 +36,7 @@ public class HttpUtilBase {
     }
 
     public static String getApiUrl(String apiName) {
-        String apiUrl = String.format("%1$s%2$2?Authorization=%3$3", GlobalConst.CWD_WEATHER_API_URL, apiName, GlobalConst.CWD_WEATHER_API_AUTH_KEY);
+        String apiUrl = String.format("%1$s%2$s?Authorization=%3$s", GlobalConst.CWD_WEATHER_API_URL,apiName, GlobalConst.CWD_WEATHER_API_AUTH_KEY);
 
         return apiUrl;
     }

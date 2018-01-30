@@ -17,4 +17,48 @@
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
+
+    <!--主文字-->
+    <style name="CommonTitleText">
+        <item name="android:textColor">@color/colorGrayPrimaryMedium</item>
+        <item name="android:textSize">@dimen/content_text_size</item>
+    </style>
+
+    <style name="CommonText">
+        <item name="android:textColor">@color/colorGrayPrimaryDark</item>
+        <!--<item name="android:textSize">@dimen/content_text_size</item>-->
+    </style>
+
+    <style name="CommonText.General" parent="CommonText">
+        <item name="android:textColor">@color/colorGrayPrimaryDark</item>
+        <item name="android:textSize">@dimen/content_text_size</item>
+    </style>
+
+    <style name="CommonText.Large" parent="CommonText">
+        <item name="android:textColor">@color/colorGrayPrimaryDark</item>
+        <item name="android:textSize">@dimen/subheading_text_size</item>
+    </style>
+
+    <style name="CommonText.ExtraLarge" parent="CommonText">
+        <item name="android:textColor">@color/colorGrayPrimaryDark</item>
+        <item name="android:textSize">18sp</item>
+    </style>
+
+    <style name="CommonText.General.GrayPrimaryMedium" parent="CommonText.General">
+        <item name="android:textColor">@color/colorGrayPrimaryMedium</item>
+    </style>
+
+    <style name="CommonText.Small.GrayPrimaryMedium" parent="CommonText.Small">
+        <item name="android:textColor">@color/colorGrayPrimaryMedium</item>
+    </style>
+
+    <style name="CommonText.Small" parent="CommonText">
+        <item name="android:textColor">@color/colorGrayPrimaryMedium</item>
+        <item name="android:textSize">@dimen/small_text_size</item>
+    </style>
+
+    <style name="CommonText.Small.GrayPrimaryDarkMedium" parent="CommonText.Small">
+        <item name="android:textColor">@color/colorGrayPrimaryMedium</item>
+    </style>
+
 </resources>

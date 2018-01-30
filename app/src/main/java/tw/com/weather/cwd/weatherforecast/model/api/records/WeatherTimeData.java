@@ -3,6 +3,8 @@ package tw.com.weather.cwd.weatherforecast.model.api.records;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import java.util.ArrayList;
+
 /**
  * Created by siang on 2018/1/29.
  */
@@ -11,6 +13,26 @@ public class WeatherTimeData implements Parcelable{
     private String startTime;
     private String endTime;
     private String elementValue;
+    private ArrayList<WeatherParameterData> parameter;
+
+    protected WeatherTimeData(Parcel in) {
+        startTime = in.readString();
+        endTime = in.readString();
+        elementValue = in.readString();
+        parameter = in.createTypedArrayList(WeatherParameterData.CREATOR);
+    }
+
+    public static final Creator<WeatherTimeData> CREATOR = new Creator<WeatherTimeData>() {
+        @Override
+        public WeatherTimeData createFromParcel(Parcel in) {
+            return new WeatherTimeData(in);
+        }
+
+        @Override
+        public WeatherTimeData[] newArray(int size) {
+            return new WeatherTimeData[size];
+        }
+    };
 
     public String getStartTime() {
         return startTime;
@@ -36,23 +58,13 @@ public class WeatherTimeData implements Parcelable{
         this.elementValue = elementValue;
     }
 
-    protected WeatherTimeData(Parcel in) {
-        startTime = in.readString();
-        endTime = in.readString();
-        elementValue = in.readString();
+    public ArrayList<WeatherParameterData> getParameter() {
+        return parameter;
     }
 
-    public static final Creator<WeatherTimeData> CREATOR = new Creator<WeatherTimeData>() {
-        @Override
-        public WeatherTimeData createFromParcel(Parcel in) {
-            return new WeatherTimeData(in);
-        }
-
-        @Override
-        public WeatherTimeData[] newArray(int size) {
-            return new WeatherTimeData[size];
-        }
-    };
+    public void setParameter(ArrayList<WeatherParameterData> parameter) {
+        this.parameter = parameter;
+    }
 
     @Override
     public int describeContents() {
@@ -64,5 +76,6 @@ public class WeatherTimeData implements Parcelable{
         dest.writeString(startTime);
         dest.writeString(endTime);
         dest.writeString(elementValue);
+        dest.writeTypedList(parameter);
     }
 }

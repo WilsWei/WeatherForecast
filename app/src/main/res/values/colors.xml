@@ -3,4 +3,14 @@
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
+
+
+    <!--文字-->
+    <color name="colorGrayPrimary">#2E2E2E</color>
+    <color name="colorGrayPrimaryLight">#ECECEC</color>
+    <color name="colorGrayPrimaryMedium">#909090</color>
+    <color name="colorGrayPrimaryDark">#484848</color>
+    <color name="colorOpacityWhite">#E6FFFFFF</color>
+    <color name="recycler_background">#C0C0C0</color>
+    <color name="recycler_white">#FFFFFF</color>
 </resources>

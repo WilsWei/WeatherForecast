@@ -54,6 +54,11 @@ public class WeatherUtil {
         this.mContext = mContext;
     }
 
+    public void refreshWeekWeather(String locationName, OnWeatherListener listener) {
+        setOnWeatherListener(listener);
+        callGetWeekWeather(locationName);
+    }
+
     public void getWeekWeather(String locationName, OnWeatherListener listener) {
         setOnWeatherListener(listener);
         getWeekWeather(locationName);

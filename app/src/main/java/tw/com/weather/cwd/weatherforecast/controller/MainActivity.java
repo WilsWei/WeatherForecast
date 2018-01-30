@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -37,6 +38,7 @@ public class MainActivity extends ActivityBase {
 
     private String mCurrentCity;
     private int mCurrentSort = 0;
+    private SwipeRefreshLayout mSwipeRefreshLayout;
 
     private WeatherRecyclerAdapter mWeatherRecyclerAdapter;
     @Override
@@ -47,7 +49,7 @@ public class MainActivity extends ActivityBase {
         setWeatherList(new ArrayList<WeatherData>());
         setCityOption();
         setSortOption();
-
+        setRefresh();
         registerReceiver();
     }
 
@@ -60,6 +62,16 @@ public class MainActivity extends ActivityBase {
         mWeatherRecyclerAdapter = new WeatherRecyclerAdapter(list, this);
         weatherRecycler.setAdapter(mWeatherRecyclerAdapter);
 
+    }
+
+    private void setRefresh() {
+        mSwipeRefreshLayout = (SwipeRefreshLayout) findViewById(R.id.swipeRefreshLayout);
+        mSwipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                WeatherInetentService.startRefreshWeather(MainActivity.this, mCurrentCity);
+            }
+        });
     }
 
     private void updateList(List<WeatherData> weekWeatherlist) {
@@ -152,6 +164,9 @@ public class MainActivity extends ActivityBase {
         @Override
         public void onReceive(Context context, Intent intent) {
             String action = intent.getAction();
+            if(mSwipeRefreshLayout != null && mSwipeRefreshLayout.isRefreshing()) {
+                mSwipeRefreshLayout.setRefreshing(false);
+            }
 
             if (action.equals(WeatherInetentService.ACTION_RETURN_FINISH)) {
                 if(intent.hasExtra(WeatherInetentService.EXTRA_WEATHER_DATA)) {

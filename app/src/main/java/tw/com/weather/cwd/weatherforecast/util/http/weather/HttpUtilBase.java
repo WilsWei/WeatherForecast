@@ -19,7 +19,7 @@ public class HttpUtilBase {
     private static final String TAG = "HttpUtilBase";
 
     public static final int MAX_RETRY_TIMES = -1;
-    public static int TIMEOUT = 60 * 1000;
+    public static final int TIMEOUT = 60 * 1000;
 
     private static RequestQueue sQueue;
 
@@ -48,6 +48,10 @@ public class HttpUtilBase {
         return sQueue;
     }
 
+    /**
+     *  根據Tag清除Volley Queue
+     * @param tag
+     */
     public static void cancelQueue(String tag) {
         if (sQueue != null) {
             sQueue.cancelAll(tag);

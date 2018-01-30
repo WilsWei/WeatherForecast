@@ -74,7 +74,7 @@ public class MainActivity extends ActivityBase {
         });
     }
 
-    private void updateList(List<WeatherData> weekWeatherlist) {
+    private void updateList(@NonNull List<WeatherData> weekWeatherlist) {
         Collections.sort(weekWeatherlist, getSortComparator());
 
         if(mWeatherRecyclerAdapter == null) {

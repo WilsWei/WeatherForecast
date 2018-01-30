@@ -14,7 +14,7 @@ public abstract class ResponseListener {
     /**
      * 需要特別處理之error
      * @param result
-     * @param activity
+     * @param context
      * @return
      */
     public static boolean handleCommonError(ResponseResult result, Context context) {

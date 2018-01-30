@@ -19,7 +19,7 @@ public class FormatUtil {
     private static final String DATATIME_FORMAT = "yyyy-MM-dd HH:mm:ss";
     /**
      * 時間字串轉為date物件
-     * @param timeString yyyy-MM-dd HH:mm:ss"
+     * @param timeString yyyy-MM-dd HH:mm:ss
      */
     public static Date timeStringToDate(String timeString){
         if(TextUtils.isEmpty(timeString)) {
@@ -40,7 +40,7 @@ public class FormatUtil {
     /**
      * 抓取日期
      * @param date
-     * @return 回傳String -> yyyy-MM-dd
+     * @return 回傳String  (yyyy-MM-dd)
      */
     public static String getDate(Date date) {
 

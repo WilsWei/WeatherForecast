@@ -15,7 +15,7 @@ public class SharedUtil {
 
     /**
      * 判斷是否為晚上時間
-     * @param timeString
+     * @param timeString (yyyy-MM-dd HH:mm:ss)
      */
     public static boolean isNight(String timeString) {
         Date targetDate = FormatUtil.timeStringToDate(timeString);
@@ -51,6 +51,11 @@ public class SharedUtil {
         return calendar;
     }
 
+    /**
+     *
+     * @param dateString (yyyy-MM-dd)
+     * @return
+     */
     public static int compareToToday(String dateString) {
         Calendar date = FormatUtil.getDate(dateString);
         Calendar today = getToday();

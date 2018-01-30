@@ -3,6 +3,7 @@ package tw.com.weather.cwd.weatherforecast.service;
 import android.app.IntentService;
 import android.content.Context;
 import android.content.Intent;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.text.TextUtils;
 
@@ -35,7 +36,12 @@ public class WeatherInetentService extends IntentService {
         super(TAG);
     }
 
-    public static void startQueryWeather(Context context, String cityName)
+    /**
+     *  查詢天氣資料
+     * @param context
+     * @param cityName
+     */
+    public static void startQueryWeather(@NonNull Context context,@NonNull String cityName)
     {
         Intent intent = new Intent(context, WeatherInetentService.class);
         intent.setAction(ACTION_QUERY_WEATHER);
@@ -43,7 +49,12 @@ public class WeatherInetentService extends IntentService {
         context.startService(intent);
     }
 
-    public static void startRefreshWeather(Context context, String cityName)
+    /**
+     * 重新整理天氣資料
+     * @param context
+     * @param cityName
+     */
+    public static void startRefreshWeather(@NonNull Context context,@NonNull String cityName)
     {
         Intent intent = new Intent(context, WeatherInetentService.class);
         intent.setAction(ACTION_REFRESH_WEATHER);

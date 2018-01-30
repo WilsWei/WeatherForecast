@@ -71,9 +71,6 @@ public class WeatherRecyclerAdapter extends RecyclerView.Adapter<WeatherRecycler
         return mList.size();
     }
 
-    // ----
-    // Getter and setter
-    // ----
     public List<WeatherData> getList() {
         return mList;
     }

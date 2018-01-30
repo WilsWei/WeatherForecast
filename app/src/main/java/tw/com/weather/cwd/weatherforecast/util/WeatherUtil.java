@@ -1,6 +1,7 @@
 package tw.com.weather.cwd.weatherforecast.util;
 
 import android.content.Context;
+import android.support.annotation.NonNull;
 
 import org.json.JSONException;
 
@@ -54,17 +55,27 @@ public class WeatherUtil {
         this.mContext = mContext;
     }
 
-    public void refreshWeekWeather(String locationName, OnWeatherListener listener) {
+    /**
+     *  重新整理天氣資料
+     * @param locationName 城市名稱
+     * @param listener
+     */
+    public void refreshWeekWeather(@NonNull String locationName, OnWeatherListener listener) {
         setOnWeatherListener(listener);
         callGetWeekWeather(locationName);
     }
 
-    public void getWeekWeather(String locationName, OnWeatherListener listener) {
+    /**
+     *  取得整理天氣資料
+     * @param locationName 城市名稱
+     * @param listener
+     */
+    public void getWeekWeather(@NonNull String locationName, OnWeatherListener listener) {
         setOnWeatherListener(listener);
         getWeekWeather(locationName);
     }
 
-    public void getWeekWeather(String locationName) {
+    private void getWeekWeather(String locationName) {
 
         if(sWeekWeathers == null) {
             sWeekWeathers = new HashMap<>();

@@ -12,12 +12,14 @@ import java.util.List;
 
 import tw.com.weather.cwd.weatherforecast.R;
 import tw.com.weather.cwd.weatherforecast.model.WeatherData;
+import tw.com.weather.cwd.weatherforecast.model.WeatherDetail;
 import tw.com.weather.cwd.weatherforecast.util.SharedUtil;
 
 
 public class WeatherRecyclerAdapter extends RecyclerView.Adapter<WeatherRecyclerAdapter.ViewHolder> {
     private List<WeatherData> mList;
     private Context mContext;
+
     public WeatherRecyclerAdapter(List<WeatherData> list, Context context) {
         this.mList = list;
         this.mContext = context;
@@ -51,17 +53,30 @@ public class WeatherRecyclerAdapter extends RecyclerView.Adapter<WeatherRecycler
             viewHolder.dateText.setText(data.getData());
         }
 
-
-        if(data.getEarlyDetail() != null && !TextUtils.isEmpty(data.getEarlyDetail().getTemperature())) {
-            viewHolder.textEarlyTemperature.setText(String.format(mContext.getString(R.string.temperature), data.getEarlyDetail().getTemperature()));
-        } else {
-            viewHolder.textEarlyTemperature.setText("-");
+        if(data.getEarlyDetail() != null) {
+            setSubView(viewHolder.earlyView, mContext.getString(R.string.early), data.getEarlyDetail());
         }
 
-        if(data.getNightDetail() != null && !TextUtils.isEmpty(data.getNightDetail().getTemperature())) {
-            viewHolder.textNightTemperature.setText(String.format(mContext.getString(R.string.temperature), data.getNightDetail().getTemperature()));
+        if(data.getNightDetail() != null) {
+            setSubView(viewHolder.nightView, mContext.getString(R.string.night), data.getNightDetail());
+        }
+    }
+
+    private void setSubView(View view, String title, WeatherDetail weatherDetail) {
+        TextView titleText = (TextView) view.findViewById(R.id.text_title);
+        TextView statusText = (TextView) view.findViewById(R.id.text_status_dec);
+        TextView temperatureText = (TextView) view.findViewById(R.id.text_temperature);
+
+        titleText.setText(title);
+
+        if(!TextUtils.isEmpty(weatherDetail.getTemperature())) {
+            temperatureText.setText(String.format(mContext.getString(R.string.temperature), weatherDetail.getTemperature()));
         } else {
-            viewHolder.textNightTemperature.setText("-");
+            temperatureText.setText("-");
+        }
+
+        if(!TextUtils.isEmpty(weatherDetail.getStatusDec())) {
+            statusText.setText(weatherDetail.getStatusDec());
         }
 
     }
@@ -84,16 +99,17 @@ public class WeatherRecyclerAdapter extends RecyclerView.Adapter<WeatherRecycler
     static class ViewHolder extends RecyclerView.ViewHolder {
         private TextView dayOfWeekText;
         private TextView dateText;
-        private TextView textEarlyTemperature;
-        private TextView textNightTemperature;
+
+        private View earlyView;
+        private View nightView;
 
         public ViewHolder(View itemView) {
             super(itemView);
 
             dayOfWeekText = (TextView) itemView.findViewById(R.id.text_day_of_week);
             dateText = (TextView) itemView.findViewById(R.id.text_date);
-            textEarlyTemperature = (TextView) itemView.findViewById(R.id.text_early);
-            textNightTemperature = (TextView) itemView.findViewById(R.id.text_night);
+            earlyView = (View) itemView.findViewById(R.id.view_early);
+            nightView = (View) itemView.findViewById(R.id.view_night);
 
         }
     }

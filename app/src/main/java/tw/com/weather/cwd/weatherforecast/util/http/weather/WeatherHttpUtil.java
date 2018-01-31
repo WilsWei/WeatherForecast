@@ -34,7 +34,7 @@ public class WeatherHttpUtil extends HttpUtilBase{
 
         HashMap<String, String> params = new HashMap<>();
 
-        params.put("elementName", "T");
+        params.put("elementName", "T,Wx");
         params.put("locationName", locationName);
         params.put("sort", "time");
 

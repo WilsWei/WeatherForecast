@@ -29,6 +29,7 @@ public class ResponseResult {
     protected String mReturnMessage;
     protected String mApiName;
     private JSONObject mBody;
+
     public JSONObject getBody() {
         return mBody;
     }
@@ -81,13 +82,5 @@ public class ResponseResult {
         this.mApiName = apiName;
     }
 
-    /**
-     * 回傳錯誤代碼是否為app自定義的
-     */
-    public static boolean isAppError(String errorCode){
-        return errorCode.equals(RESULT_CONNECTION_ERROR)
-                || errorCode.equals(RESULT_HTTP_RESPONSE_ERROR)
-                || errorCode.equals(RESULT_JSON_ERROR);
-    }
 
 }

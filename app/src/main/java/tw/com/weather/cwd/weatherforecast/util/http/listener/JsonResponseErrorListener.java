@@ -16,6 +16,7 @@ import tw.com.weather.cwd.weatherforecast.R;
 public class JsonResponseErrorListener implements Response.ErrorListener {
 
     protected String TAG = JsonResponseErrorListener.class.getSimpleName();
+
     protected ResponseListener mResponseListener;
 
     private String mApiName;
